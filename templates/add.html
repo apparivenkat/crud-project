@@ -1,0 +1,66 @@
+{% extends 'base.html' %}
+
+{% block title %}| Registration Page{% endblock title %}
+
+{% block content %}
+
+<div class="container mt-3 text-white">
+  <div class="row">
+    <div class="container col-4 h-50" id='form'>
+        <form method="post" enctype='multipart/form-data' class="p-2 text-uppercase ">
+            {% csrf_token %}
+            {{form.as_p}}
+            <div class='mx-3'>
+            <input type="submit" class='btn btn-primary px-5' value="Register">
+            <input type="reset" class='btn btn-warning px-5' value="Cancel">
+            </div>
+        </form>
+    </div>
+    <div class='col-7'>
+        <div class="p-2" id="list-details">
+            {% if student %}
+            <table  class="table table-hover text-center">
+                <thead>
+                    <tr class='text-white'>
+                        <th>NAME</th>
+                        <th>EMAIL</th>
+                        <th>COURSE</th>
+                        <th>PHOTO</th>
+                        <th>ACTION</th>
+                    </tr>
+                </thead>
+                {% for s in student %}
+                <tbody class='fw-bold'>
+                    <tr>
+                        <td><a href="{% url 'details' s.id %}" class='text-decoration-none' id='text'>{{s.name|title}}</a></td>
+                        <td>{{s.email|truncatechars_html:8}}</td>
+                        <td>{{s.course}}</td>
+                        <td><img src="{{s.photo.url}}" alt="{{s.name}}" srcset="" width='100px' height='100px' border='2px solid red' ></td>
+                            <td><a href="{% url 'update' s.id %}"><button class='btn btn-warning btn-sm m-2' type="submit">Edit</button></a>
+                            <a href="{% url 'delete' s.id %}"><button class='btn btn-danger btn-sm m-1' type="submit">Delete</button></a></td>
+                    </tr>
+                </tbody>
+                {% endfor %}
+            </table>
+            {% else %}
+            <table  class="table table-hover text-center">
+                <thead>
+                    <tr class='text-success'>
+                        <th>NAME</th>
+                        <th>EMAIL</th>
+                        <th>COURSE</th>
+                        <th>PHOTO</th>
+                        <th>ACTION</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <td>No Record Found</td>
+                </tbody>
+            </table>
+            {% endif %}
+        </div>
+      </div>
+      </div>
+</div>
+
+{% endblock content %}

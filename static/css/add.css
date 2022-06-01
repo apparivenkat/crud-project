@@ -1,0 +1,24 @@
+#form{
+    /* background-color: rgb(248, 236, 6) */
+    /* background-color: #bfff00; */
+    background-color: #35706F;
+    opacity: 1;
+}
+
+#list{
+    background-color: rgb(255, 255, 255);
+}
+
+#list-details{
+    /* background-color: rgba(190, 226, 241, 0.868); */
+    background-color: #35706F
+}
+
+body{
+    /* background-color: #53B0AE; */
+    background-color: #77FCFA;
+}
+
+#text{
+    color: rgb(159, 189, 7)
+}

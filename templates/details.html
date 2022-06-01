@@ -1,0 +1,68 @@
+{% extends 'base.html' %}
+
+{% block title %}|{{student.name|upper}} Details{% endblock title %}
+
+{% block content %}
+
+<body>
+    <div class='text-center alert alert-primary w-50 mx-auto'>
+    <h2 class='text-danger'>{{student.name|title}}'s Personal Details</h2>
+    </div>
+<div class='col-9'>
+            {% comment %} <table  class="table table-hover text-center">
+                <thead>
+                    <tr>
+                        <th>NAME</th>
+                        <th>EMAIL</th>
+                        <th>DOB</th>
+                        <th>COURSE</th>
+                        <th>GENDER</th>
+                        <th>PHONE</th>
+                        <th>AGE</th>
+                        <th>PHOTO</th>
+                        <th>ACTION</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>{{student.name}}</td>
+                        <td>{{student.email}}</td>
+                        <td>{{student.dob}}</td>
+                        <td>{{student.course}}</td>
+                        <td>{{student.gender}}</td>
+                        <td>{{student.phone}}</td>
+                        <td>{{student.age}}</td>
+                        <td><img src="{{student.photo.url}}" alt="{{s.name}}" srcset="" width='100px' height='100px' border='2px solid red' ></td>
+                        <td><a href="{% url 'delete' student.id %}"><button class='btn btn-danger btn-sm' type="submit">Delete</button></a>
+                        <a href="{% url 'create' %}"><button type="submit">Home</button></a>
+                        </td>
+                        
+                    </tr>
+                </tbody>
+            </table> {% endcomment %}
+        </div>
+      </div> 
+
+     <div class='container'>
+        <div class='row'>
+            <div class='col-4 '>
+             <img src="{{student.photo.url}}" alt="{{s.name}}" srcset="" width='200px' height='200px' border='2px solid red' class='img-thumbnail small'/>
+            </div>
+            <div class='col-6'>
+            <h4>Name => {{student.name|title}}</h4>
+            <h4>Email Id => {{student.email}}</h4>
+            <h4>Date of Birth => {{student.dob|date:" d F Y"}}</h4>
+            <h4>Gender => {{student.gender}}</h4>
+            <h4>Mobile No. => {{student.phone}}</h4>
+            <h4>Age => {{student.age}}</h4>
+        </div>
+    </div>
+    
+    <div class='text-center mt-2'>
+        <a href="{% url 'delete' student.id %}"><button class='btn btn-danger' type="submit">Delete</button></a>
+        <td><a href="{% url 'update' student.id %}"><button class='btn btn-warning' type="submit">Edit</button></a>
+        <a href="{% url 'create' %}"><button class='btn btn-primary' type="submit">Home</button></a>
+        </div>
+      </div>
+</body>
+{% endblock content %}
